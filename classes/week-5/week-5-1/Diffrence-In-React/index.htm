@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="ButtonParraent"></div>
+</body>
+<script>
+    let state = {
+        counter: 0
+    };
+
+    let onButtonPress = () => {
+        state.counter++;
+        //this can be handle by react
+        buttonReRender();
+    }
+
+    //this can be handle by react
+    let buttonReRender = () => {
+        document.getElementById("ButtonParraent").innerHTML = "";
+        const component = buttonComponent(state.counter);
+        document.getElementById("ButtonParraent").appendChild(component);
+    }
+
+    let buttonComponent = (data) => {//this is component(the reusable stufff)
+        const button = document.createElement("button");
+        button.innerHTML = `Counter ${ data }`;//default value of counter
+        button.setAttribute("onclick", `onButtonPress()`);
+        return button;
+    }
+
+    //this can be handle by react
+    buttonReRender();
+
+
+</script>
+
+</html>

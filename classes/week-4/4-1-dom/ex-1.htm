@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div style="margin-left: 45%;">
+        <h3>principal amount </h3>
+        <input oninput="DebounceMyFun()" type="number" id="principal">
+        <h3>Intrest rate </h3>
+        <input oninput="DebounceMyFun()" type="number" id="rate">
+        <h3>Duration </h3>
+        <input oninput="DebounceMyFun()" type="number" id="time">
+        <br>
+        <br>
+        <!-- <button onclick="populateMyFun()">calculate</button> -->
+        <br>
+        <br>
+        <h1 id="result"></h1>
+
+    </div>
+
+</body>
+<script>
+    let myFun = () => {
+
+
+        let a = document.getElementById("principal").value;
+        let b = document.getElementById("rate").value;
+        let c = document.getElementById("time").value;
+        let totalTime = 0;
+        let Intrest = 0;
+
+        document.getElementById("result").innerHTML = `Total : ${ parseInt(a) + parseInt(b) + parseInt(c) }  `;
+
+    }
+    let in2;
+    //lets Debounce the div , means real time calculation without clicking button
+    let DebounceMyFun = () => {
+        //delay call from 100ms
+
+        //to prevent NaN problem 
+        clearTimeout(in2);
+
+        in2 = setTimeout(() => {
+            myFun();
+        }, 100);
+        //and i will get called once
+    }
+</script>
+
+</html>

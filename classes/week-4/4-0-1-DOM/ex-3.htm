@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="" id="form1">
+        <p>hello vishal , you gonna access it using tag name</p>
+
+        <button onclick="myFun(event)">click</button>
+    </form>
+
+</body>
+
+<script>
+    let myFun = (evenet) => {
+        event.preventDefault();
+
+        //accessing data of p which in known as innerHTML   
+        let x = document.getElementsByTagName("p")[0].innerHTML;
+        let bold = document.createElement("h1");
+        bold.innerHTML = "YOU DID IT: " + x;
+
+
+        document.body.appendChild(bold);
+    } 
+</script>
+
+</html>
