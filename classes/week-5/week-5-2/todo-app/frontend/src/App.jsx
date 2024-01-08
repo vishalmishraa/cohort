@@ -1,6 +1,4 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useEffect, useState } from 'react'
 import { CreateTodo } from './components/CreateTodo'
 import { Todos } from './components/Todos'
 
@@ -8,18 +6,26 @@ import './App.css'
 
 function App() {
 
-  const [todos , setTodos] = useState([]);
-  fetch('http://localhost:3000/todos')
-  .then(async (res)=>{
-    const json = await res.json();
-    setTodos(json.todos);
-  })
-  console.log(todos);
+  const [todos, setTodos] = useState([]);
+
+  useEffect(() => {
+    todoApp();
+    console.log("fetched from App");
+  }, []);
+
+  function todoApp() {
+    fetch('http://localhost:3000/todos')
+      .then(async (res) => {
+        const json = await res.json()
+        setTodos(json.todos);
+        console.log("fetched from todoApp");
+      })
+  }
 
   return (
-    <> 
-      <CreateTodo />
-      <Todos todos={todos}></Todos >
+    <>
+      <CreateTodo todoApp={todoApp} />
+      <Todos todos={todos} todoApp={todoApp} ></Todos >
     </>
   )
 }

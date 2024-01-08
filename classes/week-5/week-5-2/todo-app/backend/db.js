@@ -9,6 +9,9 @@ db = async () => {
         console.log("database connected");
     }).catch(err => {
         console.log('ERROR', err.message);
+        console.log("TRING AGAIN");
+        db();
+                                                                    
     });//connecting mongo -> THE NAME OF WHAT WE WILL LOOK FOR IN MONGO
 
 }
